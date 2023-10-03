@@ -29,13 +29,13 @@ class MainActivity : AppCompatActivity() {
         var spinnerAccess: Spinner = findViewById(R.id.spnAccess)
 
         //button setOnCLickListeners
-        buttonRegister.setOnClickListener { }
+        buttonRegister.setOnClickListener {}
 
         buttonMainMenu.setOnClickListener { }
 
         //Populating of Spinner
         val accesses = resources.getStringArray(R.array.Accesses)
-        val adapter = ArrayAdapter(this, R.layout.activity_main, accesses)
+        val adapter = ArrayAdapter(this, R.layout.spinner_activity, R.id.txtSpinner, accesses)
         spinnerAccess.adapter = adapter
     }
 }
