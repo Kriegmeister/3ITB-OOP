@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         //Declarations of CLasses
         var registrationObject = RegistrationClass()
+        var validationObject = ValidationClass()
 
         //Declarations of buttons
         var buttonRegister: Button = findViewById(R.id.btnRegister)
@@ -61,7 +62,8 @@ class MainActivity : AppCompatActivity() {
                                         editBirthday.text.toString(),
                                         spinnerAccess.selectedItem.toString())
 
-                registrationObject.AddToArray(userData)
+                //registrationObject.AddToArray(userData)
+                validationObject.ValidatePassword()
             }catch (e: Exception) {
                 Log.e("error_garma", e.message.toString())
             }
