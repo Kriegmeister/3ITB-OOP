@@ -1,13 +1,16 @@
 package com.example.a3itb_oop
 
 import android.app.DatePickerDialog
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.TextView
 import java.lang.Exception
 import java.util.Calendar
 
@@ -68,11 +71,43 @@ class MainActivity : AppCompatActivity() {
                 Log.e("error_garma", e.message.toString())
             }
         }
-        buttonMainMenu.setOnClickListener { }
+        buttonMainMenu.setOnClickListener {
+            //showDialog()
+
+            var custom = CustomDialog()
+            var bundle = Bundle()
+            bundle.putString("bdleText", "Amon Garma")
+            custom.arguments = bundle
+            custom.show(supportFragmentManager, "Custom Dialog")
+        }
 
         //Populating of Spinner
         val accesses = resources.getStringArray(R.array.Accesses)
         val adapter = ArrayAdapter(this, R.layout.spinner_activity, R.id.txtSpinner, accesses)
         spinnerAccess.adapter = adapter
     }
+
+    public fun showDialog() {
+        var dialog = Dialog(this)
+        try {
+
+
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setCancelable(false)
+            dialog.setContentView(R.layout.activity_dialogue)
+
+            var textDialog : TextView = dialog.findViewById(R.id.txtDialogue)
+            textDialog.setText("Amon Garma")
+
+            var buttonDialog : Button = dialog.findViewById(R.id.btnDialog)
+            buttonDialog.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
+        }catch (e: Exception){
+            Log.i("error_garma", e.message.toString())
+        }
+    }
+
 }
